@@ -1,2 +1,4 @@
 gcc -Wall -o testnic testnic.c -luv
 
+gcc -Wall -o testdns testdns.c -luv
+
