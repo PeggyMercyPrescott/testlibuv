@@ -1,3 +1,6 @@
+#!/bin/bash
+
+: << 'END'
 echo "Test loop is started"
 gcc -Wall -o uvloop test01loop.c -luv
 echo "Test loop is finished"
@@ -9,6 +12,8 @@ echo "Test idle is finished"
 echo "Test cat is started"
 gcc -Wall -o uvcat test03cat.c -luv
 echo "Test cat is finished"
+
+END
 
 echo "Test tee is started"
 gcc -Wall -o uvtee test04tee.c -luv
