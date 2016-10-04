@@ -9,9 +9,13 @@ test02idle: test02idle.c
 
 test03cat: test03cat.c
 	$(CC) -o uvcat test03cat.c $(CFLAGS)
+	./uvcat testfile.txt
 
 test04tee: test04tee.c
 	$(CC) -o uvtee test04tee.c $(CFLAGS)
+	ls | ./uvtee lsresult
+	cat lsresult
+	rm lsresult
 
 clean:
 	rm uv*
