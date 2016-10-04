@@ -20,9 +20,10 @@ test04tee: test04tee.c
 test05onchange: test05onchange.c
 	$(CC) -o uvonchange test05onchange.c $(CFLAGS)
 
-test06-tcp-echo-server: test06-tcp-echo-server.c
+test06-tcp-echo: test06-tcp-echo-server.c test06-tcp-echo-client.c
 	$(CC) -o uv-tcp-echo-server test06-tcp-echo-server.c $(CFLAGS)
 	echo "Test by telnet 127.0.0.1 13370"
+	$(CC) -o uv-tcp-echo-client test06-tcp-echo-client.c $(CFLAGS)
 
 clean:
 	rm uv*
