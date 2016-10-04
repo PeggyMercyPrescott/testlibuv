@@ -18,4 +18,35 @@ git fetch add-test05onchange.c
 
 merge local
 ------------------------------
-git merge 
+git checkout master
+git merge add-test05onchange.c
+
+
+Delete branch
+------------------------------
+git branch -d add-test05onchange.c
+
+- for force delete
+git branch -D add-test05onchange.c
+
+
+Delete remote
+------------------------------
+git push origin :add-test05onchange.c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
