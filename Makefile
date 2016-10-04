@@ -20,6 +20,9 @@ test04tee: test04tee.c
 test05onchange: test05onchange.c
 	$(CC) -o uvonchange test05onchange.c $(CFLAGS)
 
+test06-tcp-echo-server: test06-tcp-echo-server.c
+	$(CC) -o uv-tcp-echo-server test06-tcp-echo-server.c $(CFLAGS)
+
 clean:
 	rm uv*
 
