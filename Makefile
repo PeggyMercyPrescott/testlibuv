@@ -17,6 +17,9 @@ test04tee: test04tee.c
 	cat lsresult
 	rm lsresult
 
+test05onchange: test05onchange.c
+	$(CC) -o uvonchange test05onchange.c $(CFLAGS)
+
 clean:
 	rm uv*
 
