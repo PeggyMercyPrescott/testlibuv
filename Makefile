@@ -28,6 +28,10 @@ test06-tcp-echo: test06-tcp-echo-server.c test06-tcp-echo-client.c
 test07-udp-dhcp: test07-udp-dhcp.c
 	$(CC) -o uv-udp-dhcp test07-udp-dhcp.c $(CFLAGS)
 
+test08dns: test08dns.c
+	$(CC) -o uvdns test08dns.c $(CFLAGS)
+
+
 clean:
 	rm uv*
 
