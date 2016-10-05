@@ -31,6 +31,8 @@ test07-udp-dhcp: test07-udp-dhcp.c
 test08dns: test08dns.c
 	$(CC) -o uvdns test08dns.c $(CFLAGS)
 
+test09nic: test09nic.c
+	$(CC) -o uvnic test09nic.c $(CFLAGS)
 
 clean:
 	rm uv*
