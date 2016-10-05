@@ -34,6 +34,9 @@ test08dns: test08dns.c
 test09nic: test09nic.c
 	$(CC) -o uvnic test09nic.c $(CFLAGS)
 
+test10threadc: test10threadc.c
+	$(CC) -o uvthreadc test10threadc.c $(CFLAGS)
+
 clean:
 	rm uv*
 
