@@ -37,6 +37,9 @@ test09nic: test09nic.c
 test10threadc: test10threadc.c
 	$(CC) -o uvthreadc test10threadc.c $(CFLAGS)
 
+test11threadlock: test11threadlock.c
+	$(CC) -o uvthreadlock test11threadlock.c $(CFLAGS)
+
 clean:
 	rm uv*
 
