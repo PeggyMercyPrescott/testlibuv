@@ -25,6 +25,9 @@ test06-tcp-echo: test06-tcp-echo-server.c test06-tcp-echo-client.c
 	echo "Test by telnet 127.0.0.1 13370"
 	$(CC) -o uv-tcp-echo-client test06-tcp-echo-client.c $(CFLAGS)
 
+test07-udp-dhcp: test07-udp-dhcp.c
+	$(CC) -o uv-udp-dhcp test07-udp-dhcp.c $(CFLAGS)
+
 clean:
 	rm uv*
 
