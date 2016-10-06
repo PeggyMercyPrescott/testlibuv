@@ -4,7 +4,7 @@
 #define FIB_UNTIL 10
 
 uv_loop_t *loop;
-uv_work_t req[FIB_UNTIL];
+uv_work_t reqs[FIB_UNTIL];
 
 long Fibonacci(int n)
 {
@@ -50,8 +50,8 @@ int main() {
     int i;
     for (i = 0; i < FIB_UNTIL; i++) {
         data[i] = i;
-        req[i].data = (void *) &data[i];
-        uv_queue_work(loop, &req[i], fib, after_fib);
+        reqs[i].data = (void *) &data[i];
+        uv_queue_work(loop, &reqs[i], fib, after_fib);
     }
 
     uv_signal_t sig;
