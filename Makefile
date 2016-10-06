@@ -43,6 +43,8 @@ test11threadlock: test11threadlock.c
 test12threadq: test12threadq.c
 	$(CC) -o uvthreadq test12threadq.c $(CFLAGS)
 
+test13interthread: test13interthread.c
+	$(CC) -o uvinterthread test13interthread.c $(CFLAGS)
 
 clean:
 	rm uv*
