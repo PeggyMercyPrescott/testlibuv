@@ -40,6 +40,10 @@ test10threadc: test10threadc.c
 test11threadlock: test11threadlock.c
 	$(CC) -o uvthreadlock test11threadlock.c $(CFLAGS)
 
+test12threadq: test12threadq.c
+	$(CC) -o uvthreadq test12threadq.c $(CFLAGS)
+
+
 clean:
 	rm uv*
 
