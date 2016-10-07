@@ -46,6 +46,10 @@ test12threadq: test12threadq.c
 test13interthread: test13interthread.c
 	$(CC) -o uvinterthread test13interthread.c $(CFLAGS)
 
+test14procspawn: test14procspawn.c
+	$(CC) -o uvprocspawn test14procspawn.c $(CFLAGS)
+
+
 clean:
 	rm uv*
 
