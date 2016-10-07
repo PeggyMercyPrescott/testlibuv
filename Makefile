@@ -52,6 +52,10 @@ test14procspawn: test14procspawn.c
 test15procdetach: test15procdetach.c
 	$(CC) -o uvprocdetach test15procdetach.c $(CFLAGS)
 
+test16signals: test16signals.c
+	$(CC) -o uvsignals test16signals.c $(CFLAGS)
+
+
 clean:
 	rm uv*
 
