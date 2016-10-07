@@ -49,6 +49,8 @@ test13interthread: test13interthread.c
 test14procspawn: test14procspawn.c
 	$(CC) -o uvprocspawn test14procspawn.c $(CFLAGS)
 
+test15procdetach: test15procdetach.c
+	$(CC) -o uvprocdetach test15procdetach.c $(CFLAGS)
 
 clean:
 	rm uv*
