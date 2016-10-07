@@ -55,6 +55,9 @@ test15procdetach: test15procdetach.c
 test16signals: test16signals.c
 	$(CC) -o uvsignals test16signals.c $(CFLAGS)
 
+test17procstream: test17procstream.c test17procstreamtest.c
+	$(CC) -o uvprocstreamtest test17procstreamtest.c $(CFLAGS)
+	$(CC) -o uvprocstream test17procstream.c $(CFLAGS)
 
 clean:
 	rm uv*
