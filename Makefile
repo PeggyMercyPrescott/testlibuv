@@ -66,6 +66,10 @@ test18cgi: test18cgitick.c test18cgi.c
 test19pipeecho: test19pipeecho.c
 	$(CC) -o uvpipeecho test19pipeecho.c $(CFLAGS)
 
+test20multiecho: test20multiecho.c test20worker.c
+	$(CC) -o uvmultiecho test20multiecho.c $(CFLAGS)
+	$(CC) -o uvworker test20worker.c $(CFLAGS)
+
 clean:
 	rm uv*
 
