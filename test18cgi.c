@@ -4,8 +4,6 @@ test by telnet 127.0.0.1 13370
 **/
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
 #include <sys/socket.h>
 #include <uv.h>
 
@@ -14,19 +12,42 @@ test by telnet 127.0.0.1 13370
 
 uv_loop_t *loop;
 
-void alloc_buffer(uv_handle_t *h, size_t size, uv_buf_t *buf) {
-    size = 1024;
-    printf("alloc_buffer(%zd)\n", size);
-    buf->base = malloc(size);
-    buf->len = size;
+
+
+void on_exit(uv_process_t *req, int64_t exit_status, int term_signal) {
+    fprintf(stderr, "Process exited with status %d, signal %d\n", exit_status, term_signal);
+    uv_close((uv_handle_t*) req, NULL);
 }
 
-void echo_read(uv_stream_t *stream, ssize_t nread, const uv_buf_t *buf) {
-    printf("echo_read(stream=%p, nread=%zd)\n", stream, nread);
-    if (nread == UV_EOF) {
-        printf("<EOF>\n");
+void invoke_cgi_script(uv_stream_t* stream) {
+  uv_process_t child_req;
+  uv_process_options_t options;
+  
+    char* args[3];
+    args[0] = "./uvcgitick";
+    args[1] = NULL;
+    args[2] = NULL;
+
+    options.stdio_count = 3;
+    uv_stdio_container_t child_stdio[3];
+    child_stdio[0].flags = UV_IGNORE;
+    child_stdio[1].flags = UV_INHERIT_STREAM;
+    child_stdio[1].data.stream = (uv_stream_t*) client;
+    child_stdio[2].flags = UV_IGNORE;
+  
+    options.stdio = child_stdio;
+    options.exit_cb = on_exit;
+    options.file = args[0];
+    options.args = args;
+  
+    child_req.data = (void*) client;
+    int r;
+    if ((r = uv_spawn(loop, &child_req, &options))) {
+        fprintf(stderr, "%s\n", uv_strerror(r));
+        return;
+    } else {
+        fprintf(stderr, "Launched process with ID %d\n", child_req.pid);
     }
-    printf("| %s\n", buf->base);
 }
 
 void on_new_connection(uv_stream_t *server, int status) {
@@ -39,7 +60,8 @@ void on_new_connection(uv_stream_t *server, int status) {
     uv_tcp_t *client = (uv_tcp_t*) malloc(sizeof(uv_tcp_t));
     uv_tcp_init(loop, client);
     if (uv_accept(server, (uv_stream_t*) client) == 0) {
-        uv_read_start((uv_stream_t*) client, alloc_buffer, echo_read);
+        //uv_read_start((uv_stream_t*) client, alloc_buffer, echo_read);
+        invoke_cgi_script((uv_stream_t*)client);
     }
     else {
         uv_close((uv_handle_t*) client, NULL);

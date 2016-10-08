@@ -59,6 +59,11 @@ test17procstream: test17procstream.c test17procstreamtest.c
 	$(CC) -o uvprocstreamtest test17procstreamtest.c $(CFLAGS)
 	$(CC) -o uvprocstream test17procstream.c $(CFLAGS)
 
+test18cgi: test18cgitick.c test18cgi.c
+	$(CC) -o uvcgitick test18cgitick.c $(CFLAGS)
+	$(CC) -o uvcgi test18cgi.c $(CFLAGS)
+
+
 clean:
 	rm uv*
 
